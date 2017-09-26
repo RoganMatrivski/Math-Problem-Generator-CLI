@@ -1,6 +1,6 @@
+C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\obj\Debug\MPG_CLI.exe
+C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\obj\Debug\MPG_CLI.pdb
 C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\bin\Debug\MPG_CLI.exe.config
 C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\bin\Debug\MPG_CLI.exe
 C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\bin\Debug\MPG_CLI.pdb
 C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\obj\Debug\MPG_CLI.csprojResolveAssemblyReference.cache
-C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\obj\Debug\MPG_CLI.exe
-C:\Users\Rogan Studio\Documents\GitHub\MPG_CLI\obj\Debug\MPG_CLI.pdb

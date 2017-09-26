@@ -3,9 +3,9 @@ using System.Diagnostics;
 using org.mariuszgromada.math.mxparser;
 using System.Text;
 
-public class TestClass
+public class Generator
 {
-    public TestClass()
+    public Generator()
     {
 
     }
@@ -26,7 +26,7 @@ public class TestClass
     Random num2Gen = new Random();
     Random randOperator = new Random();
 
-    //TestClass questionGenerator = new questionGenerator();
+    //Generator questionGenerator = new questionGenerator();
     public static string QuestionGen(int firstNum1, int firstNum2, int iterationValue, int decimalNumbers)
     {
         int retryCount = 0; //Ngitung berapa kali ngeGenerate ulang
@@ -43,13 +43,13 @@ public class TestClass
             questionString = questionString.Replace("/", " : "); //Ngeganti string yang bisa dibaca komputer ke tulisan yang bisa dibaca manusia.
             Expression ex = new Expression(questionRandResult);
             result = ex.calculate(); //Ngekalkulasi questionRandResult dengan MathFunction.MathParser.Calculate.
-            Console.WriteLine("The number {0} is the result.", result);
-            Console.WriteLine("The number {0} is the result and processed.", Math.Abs(result % 1));
-            Console.WriteLine("This number {0} is the double epsilon number.", (double.Epsilon));
-            Console.WriteLine("This => {0} should have turned on.", (Math.Floor(result)==result));
+            Debug.WriteLine("The number {0} is the result.", result);
+            Debug.WriteLine("The number {0} is the result and processed.", Math.Abs(result % 1));
+            Debug.WriteLine("This number {0} is the double epsilon number.", (double.Epsilon));
+            Debug.WriteLine("This => {0} should have turned on.", (Math.Floor(result) == result));
 
 
-            if (Math.Floor(result)==result) //Ngecek jika result merupakan angka dengan desimal
+            if (Math.Abs(result % 1) < double.Epsilon) //Ngecek jika result merupakan angka dengan desimal
             //if (!decimalChecker(result))
             {
                 stopWatch.Stop(); //hentikan menghitung waktu kalkulasi
@@ -63,7 +63,7 @@ public class TestClass
                 //resultNum = resultNew.ToString();
 
 
-                return questionString + " = " + result.ToString() + " This one is without decimal number";
+                return questionString + " = " + result.ToString();
             }
             else
             {
@@ -73,7 +73,7 @@ public class TestClass
                     stopWatch.Stop(); //hentikan menghitung waktu kalkulasi
                     var elapsedTime = stopWatch.ElapsedMilliseconds; //memasukan waktu kalkulasi ke variabel.
                     logAdd("Succeeded generating a random problem in " + elapsedTime + " millisecond, with each value between " + firstNum1 + " to " + firstNum2 + ", with an iteration number of " + iterationValue + ", regenerated " + retryCount + " times in attempt to search for the non-decimal result.");
-                    Console.WriteLine("the number " + result.ToString() + " is decimal");
+                    //Console.WriteLine("the number " + result.ToString() + " is decimal");
                     decimals = false;
                     double resultNew = Math.Round(result, Convert.ToInt32(decimalNumbers), MidpointRounding.AwayFromZero); //Jika noDecimalCheckbox tidak dicentang, maka hasil penghitungan tidak dicek dan langsung ditampilkan.
 
@@ -82,7 +82,7 @@ public class TestClass
                     //questionProblem = questionString;
                     //resultNum = resultNew.ToString();
 
-                    return questionString + " = " + resultNew.ToString() + " This one is with decimal number";
+                    return questionString + " = " + resultNew.ToString();
 
                 }
                 else
@@ -92,7 +92,6 @@ public class TestClass
                     retryCount++;
 
                 }
-                return null;
             }
         }
         return null;
@@ -103,6 +102,7 @@ public class TestClass
         return input1 - input2 < 0;
     }
 
+    
     
     public static string questionGenerator(int numIteration, int num1, int num2) //fungsi untuk mengenerate pertanyaan.
     {
