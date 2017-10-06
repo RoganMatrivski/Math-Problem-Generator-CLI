@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Copyright (c) 2017 Rogan Matrivski Lartengalf.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +20,11 @@ namespace MPG_CLI
 {
     class Program
     {
-
-        
-
         static int verbosity;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int show_help = 0;
+            bool show_help = false;
 
             
             int minimumNumber = 0;
@@ -28,31 +33,37 @@ namespace MPG_CLI
             int decimalNumber = 0;
             int numberOfQuestion = 0;
 
-            string test131234r = "";
 
+        
             var p = new OptionSet() {
-                { "min|minimum=", "the {MINIMUM NUMBER} to generate.",
+                { "min|minimum=", "the {MINIMUM} number to generate.",
                   //v => int.TryParse(v, out minimumNumber) },
                   (int v) => minimumNumber = v},
-                { "max|maximum=", "the {MAXIMUM NUMBER} to generate.",
+
+                  { "h|help",  "show this message and exit", 
+                  v => show_help = v != null },
+
+                { "max|maximum=", "the {MAXIMUM} number to generate.",
                   (int v) => maximumNumber = v },
                 { "i|iteration=", "the number of {ITERATION} to generate.",
                   (int v) => iteration = v },
                 { "dec|decimals=", "the number of {DECIMALS} for the results. /n Leave this if you want the result to have no decimal.",
                   (int v) => decimalNumber = v },
-                { "q|question=", "the number of {question} to generate.",
+                { "q|question=", "the number of {QUESTION} to generate.",
                   (int v) => iteration = v },
                 { "v", "increase debug message verbosity",
                   v => { if (v != null) ++verbosity; } },
-                { "h|help",  "show this message and exit", 
-                  //v => show_help = v != null},
-                  v => show_help++ },
+                
+
+
+                  //v => show_help++ },
                   
             };
 
+
             Debug.WriteLine(show_help);
 
-            if (show_help > 0)
+            if (show_help)
             {
                 ShowHelp(p);
                 return;
